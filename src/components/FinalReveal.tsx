@@ -9,15 +9,17 @@ import { motion } from "framer-motion";
 
 interface RevealProps {
   onRestart: () => void;
+  userGuesses?: { r1: string; r2: string };
+  wasCorrect?: boolean;
 }
 
-export const FinalReveal: React.FC<RevealProps> = ({ onRestart }) => {
+export const FinalReveal: React.FC<RevealProps> = ({ onRestart, userGuesses, wasCorrect }) => {
   useEffect(() => {
     try {
       // Vibrant brand confetti
       confetti({
-        particleCount: 70,
-        spread: 80,
+        particleCount: 80,
+        spread: 90,
         origin: { y: 0.5 },
         colors: ["#0C2340", "#52A5EC", "#B3B5E6", "#F7A859", "#F8829C"],
         disableForReducedMotion: true,
@@ -34,6 +36,27 @@ export const FinalReveal: React.FC<RevealProps> = ({ onRestart }) => {
       transition={{ duration: 0.5, type: "spring" }}
       className="max-w-4xl mx-auto py-8 px-4 font-sans space-y-8"
     >
+      {/* Humorous Banner for Incorrect Guesses */}
+      {wasCorrect === false && (
+        <motion.div 
+          initial={{ rotate: -2, scale: 0.9 }}
+          animate={{ rotate: 0, scale: 1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+          className="border-3 border-[#1C1917] bg-[#F8829C] p-6 neo-shadow-lg text-[#1C1917] space-y-2 relative overflow-hidden"
+        >
+          <div className="flex items-center space-x-2 font-mono text-xs font-bold uppercase tracking-widest bg-white border border-[#1C1917] px-2.5 py-1 inline-block">
+            <span>🕵️ INVESTIGATION OUTCOME // HYPOTHESIS MISMATCH</span>
+          </div>
+          <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#0C2340]">
+            Nice try, detective! 😜
+          </h3>
+          <p className="font-mono text-xs font-bold leading-relaxed bg-white/90 p-3 border-2 border-[#1C1917] neo-shadow-sm">
+            You guessed <span className="underline decoration-2 decoration-[#F7A859]">&ldquo;{userGuesses?.r1 || "???"}&rdquo;</span> & <span className="underline decoration-2 decoration-[#52A5EC]">&ldquo;{userGuesses?.r2 || "???"}&rdquo;</span>... 
+            Close, but no cigar! Here is the actual classified master file:
+          </p>
+        </motion.div>
+      )}
+
       <div className="border-3 border-[#1C1917] bg-white neo-shadow-lg relative overflow-hidden">
         {/* Top Folder Header */}
         <div className="bg-[#FAF8F5] border-b-3 border-[#1C1917] px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs font-bold">

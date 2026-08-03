@@ -16,6 +16,8 @@ export default function Home() {
   >("landing");
 
   const [progress, setProgress] = useState<number>(0);
+  const [userGuesses, setUserGuesses] = useState<{ r1: string; r2: string }>({ r1: "", r2: "" });
+  const [wasCorrect, setWasCorrect] = useState<boolean>(true);
 
   const handleBegin = () => {
     setPhase("brief");
@@ -40,6 +42,20 @@ export default function Home() {
   };
 
   const handleSubmitGuess = (r1: string, r2: string, reasoning: string) => {
+    setUserGuesses({ r1, r2 });
+    
+    // Check if guess matches Krishna Lohia and Pranav Agarwal (case-insensitive substring match)
+    const norm1 = r1.toLowerCase();
+    const norm2 = r2.toLowerCase();
+
+    const matchesKrishna1 = norm1.includes("krishna") || norm1.includes("lohia");
+    const matchesPranav1 = norm1.includes("pranav") || norm1.includes("agarwal");
+    const matchesKrishna2 = norm2.includes("krishna") || norm2.includes("lohia");
+    const matchesPranav2 = norm2.includes("pranav") || norm2.includes("agarwal");
+
+    const isExact = (matchesKrishna1 && matchesPranav2) || (matchesPranav1 && matchesKrishna2);
+    
+    setWasCorrect(isExact);
     setProgress(100);
     setPhase("revealed");
   };
@@ -47,6 +63,8 @@ export default function Home() {
   const handleReset = () => {
     setPhase("landing");
     setProgress(0);
+    setUserGuesses({ r1: "", r2: "" });
+    setWasCorrect(true);
   };
 
   return (
@@ -225,7 +243,11 @@ export default function Home() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <FinalReveal onRestart={handleReset} />
+              <FinalReveal 
+                onRestart={handleReset} 
+                userGuesses={userGuesses}
+                wasCorrect={wasCorrect}
+              />
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-paper: #FAF8F5;
+    --card-bg: #FFFFFF;
+    --border-dark: #1C1917;
+    --tribe-navy: #0C2340;
+    --tribe-blue: #52A5EC;
+    --tribe-skyblue: #7BB4EC;
+    --tribe-purple: #B3B5E6;
+    --tribe-orange: #F7A859;
+    --tribe-pink: #F8829C;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF8F5;
+  color: #1C1917;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Neo-Brutalism shadow utilities */
+.neo-shadow {
+  box-shadow: 4px 4px 0px #1C1917;
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px #1C1917;
+}
+
+.neo-shadow-sm {
+  box-shadow: 2px 2px 0px #1C1917;
+}
+
+.neo-shadow-hover {
+  transition: all 0.15s ease-in-out;
+}
+.neo-shadow-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1C1917;
+}
+.neo-shadow-hover:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1C1917;
+}
+
+/* Grid background pattern */
+.brutal-grid {
+  background-color: #FAF8F5;
+  background-image: linear-gradient(#E5E3DF 1px, transparent 1px), linear-gradient(90deg, #E5E3DF 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+  border-left: 2px solid #1C1917;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C1917;
 }

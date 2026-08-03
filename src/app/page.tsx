@@ -1,54 +1,31 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavigationHeader } from "@/components/NavigationHeader";
 import { EVIDENCE_DATA } from "@/lib/evidenceData";
 import { EvidenceBoard } from "@/components/EvidenceBoard";
 import { GuessPortal } from "@/components/GuessPortal";
 import { FinalReveal } from "@/components/FinalReveal";
-import { PortalLoader } from "@/components/PortalLoader";
 import { TribeLogo, VarsityShield } from "@/components/TribeLogo";
 import { ArrowRight, ShieldCheck, FileSearch } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [phaseLoading, setPhaseLoading] = useState(false);
-  const [loaderMessage, setLoaderMessage] = useState("");
-  const [pendingPhase, setPendingPhase] = useState<
-    "landing" | "brief" | "investigation" | "guess" | "revealed" | null
-  >(null);
-
   const [phase, setPhase] = useState<
     "landing" | "brief" | "investigation" | "guess" | "revealed"
   >("landing");
 
   const [progress, setProgress] = useState<number>(0);
 
-  const triggerPhaseTransition = (
-    nextPhase: "landing" | "brief" | "investigation" | "guess" | "revealed",
-    message: string
-  ) => {
-    setLoaderMessage(message);
-    setPendingPhase(nextPhase);
-    setPhaseLoading(true);
-  };
-
-  const handleLoaderComplete = () => {
-    if (pendingPhase) {
-      setPhase(pendingPhase);
-      setPendingPhase(null);
-    }
-    setPhaseLoading(false);
-  };
-
   const handleBegin = () => {
-    triggerPhaseTransition("brief", "UNSEALING CONFIDENTIAL DOSSIER...");
+    setPhase("brief");
   };
 
   const handleContinueToInvestigation = () => {
-    if (progress === 0) setProgress(20);
-    triggerPhaseTransition("investigation", "LOADING EVIDENCE BOARD & CLUES...");
+    setPhase("investigation");
+    if (progress === 0) {
+      setProgress(20);
+    }
   };
 
   const handleUnlockNext = () => {
@@ -59,38 +36,21 @@ export default function Home() {
   };
 
   const handleGoToGuess = () => {
-    triggerPhaseTransition("guess", "OPENING RESEARCH SUBMISSION PORTAL...");
+    setPhase("guess");
   };
 
   const handleSubmitGuess = (r1: string, r2: string, reasoning: string) => {
     setProgress(100);
-    triggerPhaseTransition("revealed", "DECRYPTING FINAL DOSSIER & REVEAL...");
+    setPhase("revealed");
   };
 
   const handleReset = () => {
+    setPhase("landing");
     setProgress(0);
-    triggerPhaseTransition("landing", "RESTARTING INVESTIGATION...");
   };
 
   return (
     <div className="min-h-screen flex flex-col brutal-grid font-sans text-[#1C1917]">
-      {/* Portal Loading Screen */}
-      <AnimatePresence>
-        {(initialLoading || phaseLoading) && (
-          <PortalLoader
-            message={
-              initialLoading
-                ? "AUTHENTICATING ZERODHA TRIBE DOSSIER..."
-                : loaderMessage
-            }
-            durationMs={initialLoading ? 1500 : 1200}
-            onComplete={() => {
-              if (initialLoading) setInitialLoading(false);
-              else handleLoaderComplete();
-            }}
-          />
-        )}
-      </AnimatePresence>
 
       {/* Navigation Header */}
       <NavigationHeader

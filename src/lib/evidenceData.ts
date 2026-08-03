@@ -83,12 +83,12 @@ export const EVIDENCE_DATA: EvidenceItem[] = [
     category: "Articles",
     unlockedAtProgress: 100,
     type: "snippet",
-    snippetTitle: "Primary Investigators Identified",
-    snippetBody: "Initiator 1: K. Lohia (Head of Content & Research Strategy)\nInitiator 2: P. Agarwal (Lead Quantitative Research & Analysis)\nSubject Matter: Capital Markets, Microstructure, Behavioral Economics.",
+    snippetTitle: "Primary Investigator Hash Match",
+    snippetBody: "Initiator 1: [REDACTED — Head of Content & Research Strategy]\nInitiator 2: [REDACTED — Lead Quantitative Research & Analysis]\nSubject Matter: Capital Markets, Microstructure, Behavioral Economics.",
     source: "Cryptographic Hash Match: 0x908...ZRD",
     verified: true,
     dateStr: "Aug 08, 2026",
-    hint: "All evidence vectors converge on the guest speakers for the August 9 event."
+    hint: "All evidence vectors converge on the guest speakers for the August 9 assembly. Submit your final hypothesis now."
   }
 ];
 

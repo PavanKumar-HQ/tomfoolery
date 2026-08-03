@@ -30,20 +30,20 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ item, isOpen, onCl
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="bg-[#FAF8F5] border-3 border-[#1C1917] neo-shadow-lg max-w-2xl w-full p-6 sm:p-8 relative font-sans text-[#1C1917] overflow-hidden z-10"
+            className="bg-[#FAF8F5] border-3 border-[#1C1917] neo-shadow-lg max-w-2xl w-full p-4 sm:p-8 relative font-sans text-[#1C1917] overflow-y-auto max-h-[90vh] z-10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top Bar Accent ribbon colors */}
             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#52A5EC] via-[#B3B5E6] to-[#F8829C]" />
 
             {/* Top Case Header */}
-            <div className="flex items-center justify-between border-b-2 border-[#1C1917] pb-4 mb-6 pt-2">
-              <div className="flex items-center space-x-3">
-                <span className="font-mono text-xs px-2.5 py-1 bg-[#1C1917] text-white font-bold tracking-widest neo-shadow-sm uppercase">
+            <div className="flex flex-wrap items-center justify-between border-b-2 border-[#1C1917] pb-3 mb-4 sm:mb-6 pt-2 gap-2">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <span className="font-mono text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#1C1917] text-white font-bold tracking-widest neo-shadow-sm uppercase">
                   {item.code}
                 </span>
-                <span className="font-mono text-xs text-[#1C1917] font-semibold">
-                  RECORD DATE: {item.dateStr || "VERIFIED"}
+                <span className="font-mono text-[10px] sm:text-xs text-[#1C1917] font-semibold">
+                  {item.dateStr || "VERIFIED"}
                 </span>
               </div>
               <button 

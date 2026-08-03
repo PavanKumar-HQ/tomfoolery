@@ -21,6 +21,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Operation: Find the Researchers | Case File #0908",
   description: "Internal investigation portal for Zerodha Tribe event mystery guest research.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

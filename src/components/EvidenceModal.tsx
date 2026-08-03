@@ -9,9 +9,17 @@ interface EvidenceModalProps {
   item: EvidenceItem;
   isOpen: boolean;
   onClose: () => void;
+  onAcknowledge?: () => void;
 }
 
-export const EvidenceModal: React.FC<EvidenceModalProps> = ({ item, isOpen, onClose }) => {
+export const EvidenceModal: React.FC<EvidenceModalProps> = ({ item, isOpen, onClose, onAcknowledge }) => {
+  const handleAcknowledge = () => {
+    onClose();
+    if (onAcknowledge) {
+      onAcknowledge();
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -148,10 +156,10 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ item, isOpen, onCl
             {/* Action */}
             <div className="text-right">
               <button
-                onClick={onClose}
-                className="px-6 py-2.5 bg-[#1C1917] text-white font-mono text-xs font-bold tracking-wider uppercase neo-shadow-hover neo-shadow-sm hover:bg-[#0C2340] transition-all"
+                onClick={handleAcknowledge}
+                className="px-6 py-2.5 bg-[#1C1917] text-white font-mono text-xs font-bold tracking-wider uppercase neo-shadow-hover neo-shadow-sm hover:bg-[#0C2340] active:bg-[#0C2340] transition-all touch-manipulation cursor-pointer"
               >
-                Acknowledge Clue
+                Acknowledge Clue & Continue
               </button>
             </div>
           </motion.div>

@@ -214,6 +214,7 @@ export const EvidenceBoard: React.FC<BoardProps> = ({
           item={selectedItem}
           isOpen={!!selectedItem}
           onClose={() => setSelectedItem(null)}
+          onAcknowledge={onUnlockNext}
         />
       )}
     </div>

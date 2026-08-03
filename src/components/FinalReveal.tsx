@@ -77,18 +77,34 @@ export const FinalReveal: React.FC<RevealProps> = ({ onRestart }) => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="border-3 border-[#1C1917] p-6 bg-[#7BB4EC]/20 neo-shadow-sm space-y-3 relative"
+              className="border-3 border-[#1C1917] p-6 bg-[#7BB4EC]/20 neo-shadow-sm space-y-4 relative"
             >
               <div className="font-mono text-xs font-bold text-[#1C1917] flex items-center justify-between">
                 <span className="bg-[#FAF8F5] px-2 py-0.5 border border-[#1C1917]">RESEARCHER 01</span>
                 <CheckCircle2 className="w-5 h-5 text-[#52A5EC] fill-[#0C2340]" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#0C2340]">
-                Krishna Lohia
-              </h3>
-              <p className="font-mono text-xs font-bold text-[#1C1917] bg-[#F7A859] px-2 py-0.5 border border-[#1C1917] inline-block">
-                Head of Content & Research Strategy
-              </p>
+
+              {/* Photo Frame */}
+              <div className="relative border-3 border-[#1C1917] neo-shadow-sm overflow-hidden bg-white aspect-square">
+                <img
+                  src="/images/krishna_lohia.png"
+                  alt="Krishna Lohia"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute bottom-2 left-2 bg-white border-2 border-[#1C1917] px-2 py-0.5 font-mono text-[10px] font-bold text-[#1C1917] neo-shadow-sm">
+                  VERIFIED IDENTITY ✓
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-serif text-2xl font-bold text-[#0C2340]">
+                  Krishna Lohia
+                </h3>
+                <p className="font-mono text-xs font-bold text-[#1C1917] bg-[#F7A859] px-2 py-0.5 border border-[#1C1917] inline-block mt-1">
+                  Head of Content & Research Strategy
+                </p>
+              </div>
+
               <p className="font-sans text-xs font-medium text-[#57534E] leading-relaxed pt-3 border-t-2 border-[#1C1917]">
                 Focuses on structural breakdown of Indian capital markets, demystifying indices, option mechanics, and simplifying financial literature for everyday market participants.
               </p>
@@ -99,18 +115,34 @@ export const FinalReveal: React.FC<RevealProps> = ({ onRestart }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="border-3 border-[#1C1917] p-6 bg-[#B3B5E6]/30 neo-shadow-sm space-y-3 relative"
+              className="border-3 border-[#1C1917] p-6 bg-[#B3B5E6]/30 neo-shadow-sm space-y-4 relative"
             >
               <div className="font-mono text-xs font-bold text-[#1C1917] flex items-center justify-between">
                 <span className="bg-[#FAF8F5] px-2 py-0.5 border border-[#1C1917]">RESEARCHER 02</span>
                 <CheckCircle2 className="w-5 h-5 text-[#52A5EC] fill-[#0C2340]" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#0C2340]">
-                Pranav Agarwal
-              </h3>
-              <p className="font-mono text-xs font-bold text-[#1C1917] bg-[#F8829C] px-2 py-0.5 border border-[#1C1917] inline-block">
-                Lead Quantitative Analyst & Content Specialist
-              </p>
+
+              {/* Photo Frame */}
+              <div className="relative border-3 border-[#1C1917] neo-shadow-sm overflow-hidden bg-white aspect-square">
+                <img
+                  src="/images/pranav_agarwal.png"
+                  alt="Pranav Agarwal"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute bottom-2 left-2 bg-white border-2 border-[#1C1917] px-2 py-0.5 font-mono text-[10px] font-bold text-[#1C1917] neo-shadow-sm">
+                  VERIFIED IDENTITY ✓
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-serif text-2xl font-bold text-[#0C2340]">
+                  Pranav Agarwal
+                </h3>
+                <p className="font-mono text-xs font-bold text-[#1C1917] bg-[#F8829C] px-2 py-0.5 border border-[#1C1917] inline-block mt-1">
+                  Lead Quantitative Analyst & Content Specialist
+                </p>
+              </div>
+
               <p className="font-sans text-xs font-medium text-[#57534E] leading-relaxed pt-3 border-t-2 border-[#1C1917]">
                 Specializes in data-driven market microstructure analysis, quant research teardowns, and crafting high-signal educational modules on Markets by Zerodha.
               </p>
